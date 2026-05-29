@@ -179,7 +179,7 @@ async function afficherInterface() {
 
     document.getElementById("infoProchainCour").classList.remove("loading");
     document.getElementById("Stat").classList.remove("loading");
-    document.getElementById("Stat").classList.remove("loading");
+    document.getElementById("conteneurEmploi").classList.remove("loading");
 
 
 }
