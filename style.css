@@ -1,0 +1,190 @@
+/* Mobile */
+.container {
+    padding: 10px;
+}
+/* Header */
+header{
+    margin-top: -15px;
+}
+
+#dateADJ{
+    color: #5D5D7E; /*Revoir couleur si pas trop sombre */
+}
+
+.Bienvenue{
+    color: white;
+    font-weight: bold;
+    font-size: 3.5vh;
+    margin-top: -15px;
+}
+
+/* Carte Prochain COUR */
+
+#NextCour{
+    position: relative;
+    overflow:  hidden; /* evite d'avoir des debordement chelou */
+    background-color: #0b8f5c;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: -5px;
+}
+
+#NextCour::before{
+    content: "";
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    top: -60px;
+    right: -80px;
+    position: absolute; /*Permets de les extraire, sortir (eviter d'avoir des contrainte chiant) */
+    background-color: rgba(255, 255, 255, 0.12); 
+}
+
+#NextCour::after{
+    content: "";
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 160px;
+    right: 280px;
+    position: absolute; /*Permets de les extraire, sortir (eviter d'avoir des contrainte chiant) */
+    background-color: rgba(255, 255, 255, 0.12); 
+}
+.txtProchainCour{
+    color: rgba(255, 255, 255, 0.824);
+    font-size: 16px;
+}
+
+.nomCour{
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+/*TODO CARTE INFO */
+.loading {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+#infoProchainCour {
+    transition: 0.3s ease;
+    display: flex;
+    gap: 30px;
+}
+
+.StyleInfoProchainCour {
+    display: flex;
+    align-items: center;
+    margin-top: -15px;
+}
+
+.heureDebut, .salle, .TdTpCm{
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.176);
+    font-size: 13px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.ImgSize{
+    height: 30%;
+    width: 30%;
+}
+
+.profnbTemps{
+    margin-top: -15px;
+    display: flex;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.622);
+}
+
+body {
+    background-color: #121327;
+    color: #ffffff; 
+    font-family: sans-serif; /*voir police par la suite */
+    margin: 0;
+    padding: 16px;
+}
+
+/* Stats */
+#Stat{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 12px; 
+    margin-top: 9px;
+}
+
+.containerPetitCarte{
+    display: flex;
+    width: 100%;    
+    background-color: #272741a2;
+    border-radius: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.txt-courRestant, .txt-CoursAujourdhui, .txt-heureRestant{
+    margin-top: -10px;
+    color: rgba(255, 255, 255, 0.397);
+}
+
+/* Ccour du jour */
+
+.emploiDuJour{
+    background-color: #272741a2;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 11px;
+}
+
+.ADJSpan{
+    color: rgba(255, 255, 255, 0.616);
+    font-weight: bold;
+}
+
+.carte-contenu{
+    display: flex;
+    border-left: 2px solid rgb(26, 115, 232);
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.carte-badge{
+    color: rgb(26, 115, 232);
+    background-color: rgba(26, 115, 232, 0.233);
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 15px;
+}
+
+.carte-titre{
+    font-weight: bold;
+}
+
+.carte-droite{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+hr{
+    color: rgba(255, 255, 255, 0.087);
+}
+
+
+
+
+/* PC ensuite */
+@media (min-width: 768px) {
+    .container {
+        padding: 40px;
+        max-width: 1200px;
+        margin: auto;
+    }
+}
