@@ -28,6 +28,7 @@ let txtheureRestant = document.querySelector(".txt-heureRestant");
 
 // cour adj
 let ADJSpan = document.querySelector(".ADJSpan");
+let week = document.querySelector(".week");
 
 
 dateADJ.innerHTML = dateFormatee;
@@ -93,7 +94,7 @@ async function afficherInterface() {
             conteneur.appendChild(carte);
         }
     } else {
-        // TODO
+        week.innerHTML = "Aucun cour aujourd'hui 🎉";
     }
     ADJSpan.innerHTML = "Aujourd'hui";
     txtProchainCour.innerHTML = "PROCHAIN COUR";
