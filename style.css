@@ -152,6 +152,7 @@ body {
     border-left: 2px solid rgb(26, 115, 232);
     margin-top: 10px;
     padding-left: 10px;
+    border-radius: 4px;
 }
 
 .carte-badge{
