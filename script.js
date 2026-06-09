@@ -68,18 +68,18 @@ async function afficherInterface() {
             courDuJour.push(cours);
         }
     }
-    courDuJour.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut); // Trie les cour par heure 
+    courDuJour.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut);
     const CourDeLaJournee = courDuJour[0];
     const conteneur = document.querySelector(".emploiDuJour");
     if (CourDeLaJournee) {
-        for(let i =0;i<courDuJour.length; i++){
+        for (let i = 0; i < courDuJour.length; i++) {
             const cours = courDuJour[i];
 
             const carte = document.createElement("div");
             carte.classList.add("carteCours");
 
             carte.innerHTML = `
-                <div class="carte-contenu">
+                <div class="cartecontenu">
                     <div class="carte-gauche">
                         <p class="carte-titre">${cours.titre}</p>
                         <p class="carte-heure">${cours.heure} - ${cours.heureFin}</p>
@@ -90,7 +90,12 @@ async function afficherInterface() {
                     </div>
                 </div>
                 <hr>
-            `;  
+            `;
+
+            if (maintenant >= cours.dateObjetDebut && maintenant <= cours.dateObjetFin) {
+                carte.querySelector(".cartecontenu").style.backgroundColor = "rgba(148, 147, 147, 0.15)";
+            }
+
             conteneur.appendChild(carte);
         }
     } else {
@@ -186,7 +191,6 @@ async function afficherInterface() {
 }
 
 afficherInterface();
-
 
 /*if (cours.dateObjetFin >= maintenant) {
             nbHeureRestant += (cours.dateObjetFin - Math.max(cours.dateObjetDebut, maintenant));

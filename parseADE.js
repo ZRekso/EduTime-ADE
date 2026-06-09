@@ -140,6 +140,7 @@ async function tableau(){
         if(ligne[i].startsWith("END:VEVENT")){
             PlanningActuelle.push(evenementActuel);
         }
+
     }
     console.log(PlanningActuelle);
     return PlanningActuelle;
