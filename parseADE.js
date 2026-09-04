@@ -3,7 +3,7 @@ Async permets de mettre en attente tout en continuant d'autre action
 ne mets pas tout le programme en pause
 */
 async function recupererPlanning() {
-    const url = "https://planning-proxy-p139.onrender.com/planning"; // WARNING : LIEN BON juqu'a Septembre (DEVRA ETRE CHANGER)
+    const url = "https://planning-proxy-p139.onrender.com/planning"; // WARNING : LIEN BON juqu'au septembre 2027 (DEVRA ETRE CHANGER)
     try {
         const reponse = await fetch(url);
         const donneeBrute = await reponse.text();
