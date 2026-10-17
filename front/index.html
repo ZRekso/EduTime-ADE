@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="IMG/favicon-edutime.svg">
+    <link rel="apple-touch-icon" href="IMG/LOGO.png">   
+    <title>EduTime</title>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+    <header>
+        <p id="dateADJ" class="txt-dateADJ"></p>
+        <p class="Bienvenue">Bonjour ! 👋</p>
+    </header>
+
+    <!-- voir pour afficher le prochain cour -->
+    <section id="NextCour">
+        <p class="txtProchainCour"></p>
+        <p class="nomCour">Chargement...</p>
+        <div id="infoProchainCour" class="loading">
+            <div class="StyleInfoProchainCour">
+                <!--<img class="ImgSize" src="IMG/Horloge.svg" alt="Image horloge">-->
+                <p class="heureDebut"></p>
+            </div>
+            <div class="StyleInfoProchainCour">
+                <!-- <img class="ImgSize" src="IMG/Localiser.svg" alt="Image Localiser"> -->
+                <p class="salle"></p>
+            </div>
+            <div class="StyleInfoProchainCour">
+                <p class="TdTpCm"></p>
+            </div>
+        </div>
+        <div class="profnbTemps">
+            <p class="nbTemps"></p>
+            <p class="tiret"></p>
+            <p class="professeur"></p>
+        </div>
+    </section>
+
+    <!-- voir pour afficher les stast combie nde cour restant avant la fin de journee, combien de cour au total dans la journee, et un toisieme jsp encore-->
+    <section id="Stat" class="loading">
+        <div class="containerPetitCarte">
+            <p class="NbCourADJ"></p>
+            <p class="txt-CoursAujourdhui"></p>
+        </div>
+
+        <div class="containerPetitCarte">
+            <p class="NbCourRestant"></p>
+            <p class="txt-courRestant"></p>
+        </div>
+        
+        <div class="containerPetitCarte">
+            <p class="NbHeureRestant"></p>
+            <p class="txt-heureRestant"></p>
+        </div>
+    </section>
+
+    <!-- Voir pour afficher edt recup avec JS -->
+    <section id="conteneurEmploi" class="loading">
+        <div class="emploiDuJour">
+            <div class="emploiHeader">
+                <span class="ADJSpan">Aujourd'hui</span>
+                <p class="week"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- btn acceuil, semaine, reglage, (option NOTIFICATION quand il y a un cour qui a etait annule ou modifier, ou les FUTUR DS )-->
+    <nav>
+        
+    </nav>
+
+    <script src="parseADE.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</body>
+</html>
