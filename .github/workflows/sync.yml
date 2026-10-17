@@ -1,0 +1,20 @@
+name: Sync ADE
+
+on:
+  schedule:
+    - cron: "7 * * * *"   # toutes les heures à la minute 7 (UTC)
+  workflow_dispatch:       # bouton pour lancer à la main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - run: pip install -r ParseIcal/requirements.txt
+      - run: python ParseIcal/Ical.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
