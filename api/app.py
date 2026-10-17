@@ -1,14 +1,12 @@
 from flask import Flask, jsonify
 from supabase import create_client
 from flask_cors import CORS
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+supabase = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SECRET_KEY"])
 
-supabase_config = {
-    "url": "https://jgqyvsjgwpuicfzwdnsd.supabase.co",
-    "key": "sb_publishable_uGfXito86wCjr_6kRw2LVA_44Q6HkhO"  # Clé publique
-}
-
-supabase = create_client(supabase_config["url"], supabase_config["key"])
 app = Flask(__name__)
 CORS(app) # autorise le front à appeler l'api (autre port)
 
