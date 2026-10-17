@@ -1,0 +1,218 @@
+const API_URL = "https://apiedutime.vercel.app/";
+
+async function tableau() {
+    const reponse = await fetch(API_URL);
+    const donnees = await reponse.json();
+
+    const cours = [];
+    for (let i = 0; i < donnees.length; i++) {
+        const c = donnees[i];
+        const debut = new Date(`${c.date}T${c.heure_debut}`);
+        const fin = new Date(`${c.date}T${c.heure_fin}`);
+
+        cours.push({
+            titre: c.matiere,
+            professeur: c.prof || "",
+            salle: c.salle || "",
+            TpTdCm: c.type_cours || "",
+            heure: c.heure_debut.slice(0, 5),      // "08:30:00" -> "08:30"
+            heureFin: c.heure_fin.slice(0, 5),
+            date: debut.toLocaleDateString("fr-FR"), // "17/10/2026", comme avant
+            dateObjetDebut: debut,
+            dateObjetFin: fin
+        });
+    }
+    return cours;
+}
+
+// Affichage DATE
+const aujourdHui = new Date();
+const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+let dateFormatee = new Intl.DateTimeFormat('fr-FR', options).format(aujourdHui);
+dateFormatee = dateFormatee.charAt(0).toUpperCase() + dateFormatee.slice(1);
+
+
+// Prochain cour
+let dateADJ = document.querySelector(".txt-dateADJ");
+let professeur = document.querySelector(".professeur");
+let nomCour = document.querySelector(".nomCour");
+let heureDebut = document.querySelector(".heureDebut");
+let salle = document.querySelector(".salle");
+let TdTpCm = document.querySelector(".TdTpCm");
+let txtProchainCour = document.querySelector(".txtProchainCour");
+let tempsProchainCour = document.querySelector(".nbTemps");
+let tiret = document.querySelector(".tiret");
+
+//stat
+let NbCourADJ = document.querySelector(".NbCourADJ");
+let CoursAujourdhui = document.querySelector(".txt-CoursAujourdhui");
+
+let NbCourRestant = document.querySelector(".NbCourRestant");
+let txtcourRestant = document.querySelector(".txt-courRestant");
+
+let NbHeureRestant = document.querySelector(".NbHeureRestant");
+let txtheureRestant = document.querySelector(".txt-heureRestant");
+
+// cour adj
+let ADJSpan = document.querySelector(".ADJSpan");
+let week = document.querySelector(".week");
+
+
+dateADJ.innerHTML = dateFormatee;
+
+async function afficherInterface() {
+    const tousLesCours = await tableau();
+    const courDuJour = [];
+    const maintenant = new Date();
+    const coursFutursEtActuels = [];
+    for (let i = 0; i < tousLesCours.length; i++) {
+        const cours = tousLesCours[i];
+        if (cours.dateObjetFin > maintenant) {
+            coursFutursEtActuels.push(cours);
+        }
+    }
+    coursFutursEtActuels.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut);
+    const prochainCours = coursFutursEtActuels[0];
+    if (prochainCours) {
+        nomCour.innerHTML = prochainCours.titre;
+        professeur.innerHTML = prochainCours.professeur;
+        heureDebut.innerHTML = prochainCours.heure;
+        salle.innerHTML = prochainCours.salle;
+        TdTpCm.innerHTML = prochainCours.TpTdCm;
+    } else {
+        nomCour.innerHTML = "Aucun cours à venir !";
+        professeur.innerHTML = "";
+        heureDebut.innerHTML = "";
+        salle.innerHTML = "";
+        TdTpCm.innerHTML = "";
+    }
+    txtProchainCour.innerHTML = "PROCHAIN COURS";
+
+    // Emploi du temps de la journée
+    for (let i = 0; i < tousLesCours.length; i++) {
+        const cours = tousLesCours[i];
+        if (cours.dateObjetDebut.toDateString() === aujourdHui.toDateString()) {
+            courDuJour.push(cours);
+        }
+    }
+    courDuJour.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut);
+    const CourDeLaJournee = courDuJour[0];
+    const conteneur = document.querySelector(".emploiDuJour");
+    if (CourDeLaJournee) {
+        for (let i = 0; i < courDuJour.length; i++) {
+            const cours = courDuJour[i];
+
+            const carte = document.createElement("div");
+            carte.classList.add("carteCours");
+
+            carte.innerHTML = `
+                <div class="cartecontenu">
+                    <div class="carte-gauche">
+                        <p class="carte-titre">${cours.titre}</p>
+                        <p class="carte-heure">${cours.heure} - ${cours.heureFin}</p>
+                    </div>
+                    <div class="carte-droite">
+                        <span class="carte-badge">${cours.TpTdCm}</span>
+                        <p class="carte-salle">${cours.salle}</p>
+                    </div>
+                </div>
+                <hr>
+            `;
+
+            if (maintenant >= cours.dateObjetDebut && maintenant <= cours.dateObjetFin) {
+                carte.querySelector(".cartecontenu").style.backgroundColor = "rgba(148, 147, 147, 0.15)";
+            }
+
+            conteneur.appendChild(carte);
+        }
+    } else {
+        week.innerHTML = "Aucun cour aujourd'hui 🎉";
+    }
+    ADJSpan.innerHTML = "Aujourd'hui";
+    txtProchainCour.innerHTML = "PROCHAIN COURS";
+
+
+
+
+    // Stat NB cour journee
+    const AujourdHui = new Date().toLocaleDateString("fr-FR");
+    let nbCoursJournee = 0;
+    for (let i = 0; i < tousLesCours.length; i++) {
+        const cours = tousLesCours[i];
+        if (cours.date === AujourdHui) {
+            nbCoursJournee++;
+        }
+    }
+    if(nbCoursJournee > 0 ){
+        NbCourADJ.innerHTML = nbCoursJournee;
+    }
+    else{
+        nbCoursJournee = 0;
+        NbCourADJ.innerHTML = nbCoursJournee;
+    }
+    CoursAujourdhui.innerHTML = "Cours / ADJ";
+
+    //stat NB cour restant
+    const HeureADJs = new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    let nbCoursRestant = 0;
+    for (let i = 0; i < tousLesCours.length; i++) {
+        const cours = tousLesCours[i];
+        if (cours.date === AujourdHui && cours.heure > HeureADJs) {
+            nbCoursRestant++;
+        }
+    }
+    if(nbCoursRestant > 0 ){
+        NbCourRestant.innerHTML = nbCoursRestant;
+    }
+    else{
+        nbCoursRestant = 0;
+        NbCourRestant.innerHTML = nbCoursRestant;
+    }
+    txtcourRestant.innerHTML = "Cours / RST";
+
+    // Temps restant avant le prochain cours
+    if (!prochainCours) {
+        tempsProchainCour.innerHTML = "--";
+    } else {
+        const diff = prochainCours.dateObjetDebut - maintenant;
+
+        if (diff <= 0) {
+            tempsProchainCour.innerHTML = "En cours";
+            tiret.innerHTML = " - ";
+        } else {
+            const heures = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            if (heures > 0) {
+                tempsProchainCour.innerHTML = `${heures}h ${minutes}min`;
+                tiret.innerHTML = " - ";
+            } else {
+                tempsProchainCour.innerHTML = `${minutes} min`;
+                tiret.innerHTML = " - ";
+            }
+        }
+    }
+
+    //stat NB Heure restant
+    let msRestantes = 0;
+    for (let i = 0; i < tousLesCours.length; i++) {
+        const cours = tousLesCours[i];
+        if (cours.date === AujourdHui && cours.dateObjetFin > maintenant) {
+            // Si le cours a déjà commencé, on ne compte que le temps restant
+            msRestantes += cours.dateObjetFin - Math.max(cours.dateObjetDebut, maintenant);
+        }
+    }
+    const minutesRestantes = Math.round(msRestantes / (1000 * 60));
+    const heuresRestantes = Math.floor(minutesRestantes / 60);
+    const minutesReste = String(minutesRestantes % 60).padStart(2, "0");
+    NbHeureRestant.innerHTML = `${heuresRestantes}h${minutesReste}`;
+    txtheureRestant.innerHTML = "Heure";
+
+    document.getElementById("infoProchainCour").classList.remove("loading");
+    document.getElementById("Stat").classList.remove("loading");
+    document.getElementById("conteneurEmploi").classList.remove("loading");
+
+
+}
+
+afficherInterface();
