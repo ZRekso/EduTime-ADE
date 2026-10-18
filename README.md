@@ -13,6 +13,7 @@ EduTime est une application web qui récupère l'emploi du temps ADE des étudia
 
 - Affichage de l'emploi du temps ADE de la classe.
 - Consultation plus simple et plus rapide qu'avec l'interface ADE.
+- Mise à jour automatique des données : un script récupère les nouvelles données ADE et les insère dans Supabase, relancé automatiquement via GitHub Actions.
 
 **Outils utilisés :**
 
@@ -24,6 +25,11 @@ EduTime est une application web qui récupère l'emploi du temps ADE des étudia
 - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 - ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 
+**Hébergement et automatisation :**
+
+- ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white) Hébergement du front.
+- ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white) Relance du script qui insère les nouvelles données dans Supabase.
+
 **Logiciels utilisés :**
 
-![PyCharm](https://img.shields.io/badge/PyCharm-000000?logo=pycharm&logoColor=white)
+- ![PyCharm](https://img.shields.io/badge/PyCharm-000000?logo=pycharm&logoColor=white)
