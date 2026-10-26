@@ -4,7 +4,6 @@ const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric
 let dateFormatee = new Intl.DateTimeFormat('fr-FR', options).format(aujourdHui);
 dateFormatee = dateFormatee.charAt(0).toUpperCase() + dateFormatee.slice(1);
 
-
 // Prochain cour 
 let dateADJ = document.querySelector(".txt-dateADJ");
 let professeur = document.querySelector(".professeur");
@@ -29,7 +28,6 @@ let txtheureRestant = document.querySelector(".txt-heureRestant");
 // cour adj
 let ADJSpan = document.querySelector(".ADJSpan");
 let week = document.querySelector(".week");
-
 
 dateADJ.innerHTML = dateFormatee;
 
@@ -103,8 +101,6 @@ async function afficherInterface() {
     }
     ADJSpan.innerHTML = "Aujourd'hui";
     txtProchainCour.innerHTML = "PROCHAIN COUR";
-
-
 
 
     // Stat NB cour journee

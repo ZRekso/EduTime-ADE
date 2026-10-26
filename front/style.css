@@ -1,3 +1,17 @@
+:root {
+    --bg: #F4F5F9;
+    --bgNavBar: #FFFFFF;
+    --btnActif: #2848C8;
+    --courCarte: #2848C8;
+    --texte: #000000;
+}
+
+[data-theme="sombre"] {
+    /* TODO */
+}
+
+
+
 /* Mobile */
 .container {
     padding: 10px;
