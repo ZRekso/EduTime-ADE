@@ -22,14 +22,10 @@ header{
 }
 
 #dateADJ{
-    color: #5D5D7E; /*Revoir couleur si pas trop sombre */
-}
-
-.Bienvenue{
-    color: white;
+    /* color: #5D5D7E; Couleur pour la semaine EX: SEMAINE44 */
+    color: var(--texte);
     font-weight: bold;
     font-size: 3.5vh;
-    margin-top: -15px;
 }
 
 /* Carte Prochain COUR */
@@ -37,7 +33,7 @@ header{
 #NextCour{
     position: relative;
     overflow:  hidden; /* evite d'avoir des debordement chelou */
-    background-color: #0b8f5c;
+    background-color:  var(--courCarte);
     border-radius: 20px;
     padding: 10px;
     margin-top: -5px;
@@ -116,8 +112,8 @@ header{
 }
 
 body {
-    background-color: #121327;
-    color: #ffffff; 
+    background-color: var(--bg);
+    color: #ffffff;
     font-family: sans-serif; /*voir police par la suite */
     margin: 0;
     padding: 16px;
@@ -131,21 +127,10 @@ body {
     margin-top: 9px;
 }
 
-.containerPetitCarte{
-    display: flex;
-    width: 100%;    
-    background-color: #272741a2;
-    border-radius: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    flex-direction: column;
-    box-sizing: border-box;
-}
-
-.txt-courRestant, .txt-CoursAujourdhui, .txt-heureRestant{
+/*.txt-courRestant, .txt-CoursAujourdhui, .txt-heureRestant{
     margin-top: -10px;
     color: rgba(255, 255, 255, 0.397);
-}
+}*/
 
 /* Ccour du jour */
 
@@ -170,7 +155,6 @@ body {
 }
 
 .carte-badge{
-    color: rgb(26, 115, 232);
     background-color: rgba(26, 115, 232, 0.233);
     padding-left: 8px;
     padding-right: 8px;

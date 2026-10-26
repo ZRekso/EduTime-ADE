@@ -27,9 +27,10 @@ async function tableau() {
 
 // Affichage DATE
 const aujourdHui = new Date();
-const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-let dateFormatee = new Intl.DateTimeFormat('fr-FR', options).format(aujourdHui);
-dateFormatee = dateFormatee.charAt(0).toUpperCase() + dateFormatee.slice(1);
+const options = { weekday: 'long', day: 'numeric', month: 'long'};
+let dateFront = new Intl.DateTimeFormat('fr-FR', options).format(aujourdHui);
+dateFront = dateFront.charAt(0).toUpperCase() + dateFront.slice(1);
+
 
 
 // Prochain cour
@@ -58,7 +59,7 @@ let ADJSpan = document.querySelector(".ADJSpan");
 let week = document.querySelector(".week");
 
 
-dateADJ.innerHTML = dateFormatee;
+dateADJ.innerHTML = dateFront;
 
 async function afficherInterface() {
     const tousLesCours = await tableau();
@@ -133,7 +134,7 @@ async function afficherInterface() {
 
 
 
-
+    /*
     // Stat NB cour journee
     const AujourdHui = new Date().toLocaleDateString("fr-FR");
     let nbCoursJournee = 0;
@@ -211,7 +212,7 @@ async function afficherInterface() {
     document.getElementById("infoProchainCour").classList.remove("loading");
     document.getElementById("Stat").classList.remove("loading");
     document.getElementById("conteneurEmploi").classList.remove("loading");
-
+    */
 
 }
 
