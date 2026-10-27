@@ -21,7 +21,7 @@ calendrier_ical = Calendar.from_ical(reponse_ical.text)
 
 def ligne_prof(ligne):
     texte = ligne.strip()
-    if (texte.startswith("Groupe") or texte.startswith("B1INFO") or texte.startswith("A Attester") or texte.startswith("(") or texte == ""):
+    if (texte.startswith("Groupe") or texte.startswith("B2INFO") or texte.startswith("A Attester") or texte.startswith("(") or texte == ""):
         return False
     return True
 
