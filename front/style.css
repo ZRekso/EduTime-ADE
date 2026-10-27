@@ -94,11 +94,11 @@
 }
 
 #cercleEtatE {
-  animation: pulse-animationEnCour 2s infinite;
+  animation: pulse-animationEnCour 1s infinite;
 }
 
 #cercleEtatP{
-    animation: pulse-animationProchainCour 2s infinite;
+    animation: pulse-animationProchainCour 1s infinite;
 }
 
 @keyframes pulse-animationEnCour{
@@ -336,6 +336,73 @@ hr{
     text-align: center;
 }
 
+
+#journee{
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.heureFinJournee, .heureDebutJournee{
+    color: var(--texte);
+}
+
+.heureDebutJournee, .heureFinJournee{
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--police-texte);
+  font-size: var(--texte-mini);
+  font-weight: var(--graisse-semi);
+  color: #5E667D;
+}
+
+.containerHeureJournee p {
+  margin: 0;
+}
+
+
+.containerHeureJournee{
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.txtJournee{
+    font-family: var(--police-texte);
+    font-size: var(--texte-carte);
+    font-weight: var(--graisse-gras);
+    color: var(--texte);
+    margin: 0;
+}
+
+.nbCourADJ{
+    font-family: var(--police-texte);
+    font-size: var(--texte-petit);
+    font-weight: var(--graisse-normal);
+    color: #5E667D;
+    margin: 0;
+}
+
+.barreJournee{
+    height: 10px;
+    background: #EEF0F6;
+    border-radius: 10px;
+}
+
+.barreJournee-remplie{
+    height: 100%;
+    background-color: #2848C8;
+    border-radius: 10px;
+
+}
 
 
 /* PC ensuite */
