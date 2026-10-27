@@ -43,6 +43,7 @@ let status = document.querySelector(".status")
 let barreFin = document.querySelector(".barreFin");
 let barreDebut = document.querySelector(".barreDebut");
 
+let nbCourADJ = document.querySelector(".nbCourADJ");
 
 let salle = document.querySelector(".salle");
 let TdTpCm = document.querySelector(".TdTpCm");
@@ -78,6 +79,8 @@ async function afficherInterface() {
             coursFutursEtActuels.push(cours);
         }
     }
+
+
     coursFutursEtActuels.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut);
     const prochainCours = coursFutursEtActuels[0];
     if (prochainCours) {
@@ -176,9 +179,6 @@ async function afficherInterface() {
     }
     ADJSpan.innerHTML = "Aujourd'hui";
 
-
-
-    /*
     // Stat NB cour journee
     const AujourdHui = new Date().toLocaleDateString("fr-FR");
     let nbCoursJournee = 0;
@@ -189,14 +189,36 @@ async function afficherInterface() {
         }
     }
     if(nbCoursJournee > 0 ){
-        NbCourADJ.innerHTML = nbCoursJournee;
+        nbCourADJ.innerHTML = nbCoursJournee + " cours";
     }
     else{
         nbCoursJournee = 0;
-        NbCourADJ.innerHTML = nbCoursJournee;
+        nbCourADJ.innerHTML = nbCoursJournee + " cours";
     }
-    CoursAujourdhui.innerHTML = "Cours / ADJ";
 
+
+    let heureDebutJournee = document.querySelector(".heureDebutJournee");
+    let heureFinJournee = document.querySelector(".heureFinJournee");
+    const debut = courDuJour[0].dateObjetDebut;
+    const fin = courDuJour[courDuJour.length-1].dateObjetFin;
+
+    // TODO Voir si ya pas un bug ou si le tableau est bien trié car pas les bonnes heures
+    const minutesDebut = String(debut.getMinutes()).padStart(2, '0');
+    const heureDebutFormattee = `${debut.getHours()}:${minutesDebut}`;
+    const minutesFin = String(fin.getMinutes()).padStart(2, '0');
+    const heureFinFormattee = `${debut.getHours()}:${minutesFin}`;
+
+
+    heureDebutJournee.innerHTML = heureDebutFormattee;
+    heureFinJournee.innerHTML = heureFinFormattee;
+    const pourcentage = (maintenant - debut) / (fin - debut) * 100;
+    document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
+
+
+
+
+
+    /*
     //stat NB cour restant
     const HeureADJs = new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
     let nbCoursRestant = 0;
