@@ -209,7 +209,6 @@ async function afficherInterface() {
         const minutesFin = String(fin.getMinutes()).padStart(2, '0');
         const heureFinFormattee = `${debut.getHours()}:${minutesFin}`;
 
-
         heureDebutJournee.innerHTML = heureDebutFormattee;
         heureFinJournee.innerHTML = heureFinFormattee;
         const pourcentage = (maintenant - debut) / (fin - debut) * 100;
