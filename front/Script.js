@@ -79,7 +79,7 @@ async function afficherInterface() {
         professeur.innerHTML = prochainCours.professeur;
         heureDebut.innerHTML = prochainCours.heure;
         salle.innerHTML = prochainCours.salle;
-        TdTpCm.innerHTML = prochainCours.TpTdCm;
+        // TdTpCm.innerHTML = prochainCours.TpTdCm;
     } else {
         nomCour.innerHTML = "Aucun cours à venir !";
         professeur.innerHTML = "";
@@ -87,7 +87,6 @@ async function afficherInterface() {
         salle.innerHTML = "";
         TdTpCm.innerHTML = "";
     }
-    txtProchainCour.innerHTML = "PROCHAIN COURS";
 
     // Emploi du temps de la journée
     for (let i = 0; i < tousLesCours.length; i++) {
@@ -130,7 +129,7 @@ async function afficherInterface() {
         week.innerHTML = "Aucun cour aujourd'hui 🎉";
     }
     ADJSpan.innerHTML = "Aujourd'hui";
-    txtProchainCour.innerHTML = "PROCHAIN COURS";
+    txtProchainCour.innerHTML = "<span id='cercleEtat'>○</span> PROCHAIN COURS";
 
 
 

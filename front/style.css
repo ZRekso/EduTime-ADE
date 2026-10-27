@@ -4,6 +4,52 @@
     --btnActif: #2848C8;
     --courCarte: #2848C8;
     --texte: #000000;
+
+     /* Polices */
+    --police-titre: 'Bricolage Grotesque', sans-serif;
+    --police-texte: 'DM Sans', system-ui, sans-serif;
+
+    /* Tailles des titres (Bricolage) */
+    --titre-page: 30px;      /* Date, « Semaine 44 », « Réglages » */
+    --titre-cours: 24px;     /* Nom du cours en cours */
+    --titre-jour: 20px;      /* « Lundi 26 octobre » (Semaine) */
+    --numero-jour: 19px;     /* 26, 27… (Semaine) */
+    --titre-section: 18px;   /* « À suivre » */
+
+    /* Tailles du texte (DM Sans) */
+    --texte-groupe: 16px;    /* « Mon groupe » */
+    --texte-liste: 15px;     /* Nom des cours, « Lien iCal ADE » */
+    --texte-carte: 14px;     /* Infos carte bleue, « Ta journée », Sombre/Clair */
+    --texte-info: 13px;      /* « Semaine 44 », résumés, pastille heure, « Modifier » */
+    --texte-petit: 12px;     /* Horaires, pause, intertitres, onglets */
+    --texte-mini: 11px;      /* Graduation frise, LUN/MAR */
+    --texte-micro: 10px;     /* Type dans la pastille, « 4 cours » sous le jour */
+
+    /* Graisses */
+    --graisse-normal: 400;
+    --graisse-moyen: 500;
+    --graisse-semi: 600;
+    --graisse-gras: 700;
+
+    /* Réglages des titres */
+    --interligne-titre: 1.05;
+    --espacement-titre: -0.02em;
+    --espacement-majuscules: 0.08em; /* « EN COURS », intertitres */
+}
+
+.container-etatCour{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.txtProchainCour, .salle {
+  font-family: var(--police-texte);
+  font-size: var(--texte-petit);
+  font-weight: var(--graisse-gras);
+  text-transform: uppercase;
+  letter-spacing: var(--espacement-majuscules);
+  color: #FFFFFF;
 }
 
 [data-theme="sombre"] {
@@ -24,8 +70,11 @@ header{
 #dateADJ{
     /* color: #5D5D7E; Couleur pour la semaine EX: SEMAINE44 */
     color: var(--texte);
-    font-weight: bold;
-    font-size: 3.5vh;
+    font-family: var(--police-titre);
+    font-size: var(--titre-page);
+    font-weight: var(--graisse-gras);
+    line-height: var(--interligne-titre);
+    letter-spacing: var(--espacement-titre);
 }
 
 /* Carte Prochain COUR */
@@ -39,6 +88,7 @@ header{
     margin-top: -5px;
 }
 
+/*
 #NextCour::before{
     content: "";
     width: 150px;
@@ -46,10 +96,9 @@ header{
     border-radius: 50%;
     top: -60px;
     right: -80px;
-    position: absolute; /*Permets de les extraire, sortir (eviter d'avoir des contrainte chiant) */
-    background-color: rgba(255, 255, 255, 0.12); 
+    position: absolute; /*Permets de les extraire, sortir (eviter d'avoir des contrainte chiant) *//*
+    background-color: rgba(255, 255, 255, 0.12);
 }
-
 #NextCour::after{
     content: "";
     width: 100px;
@@ -57,17 +106,22 @@ header{
     border-radius: 50%;
     top: 160px;
     right: 280px;
-    position: absolute; /*Permets de les extraire, sortir (eviter d'avoir des contrainte chiant) */
-    background-color: rgba(255, 255, 255, 0.12); 
-}
+    position: absolute; /*Permets de les extraire, sortir (eviter d'avoir des contrainte chiant) *//*
+    background-color: rgba(255, 255, 255, 0.12);
+}*/
+
 .txtProchainCour{
-    color: rgba(255, 255, 255, 0.824);
-    font-size: 16px;
+    letter-spacing: var(--espacement-majuscules)
 }
 
 .nomCour{
-    font-weight: bold;
-    margin-top: -10px;
+    margin-top: -4px;
+    font-family: var(--police-titre);
+    font-size: var(--titre-cours);
+    font-weight: var(--graisse-gras);
+    line-height: 1.1;
+    letter-spacing: var(--espacement-titre);
+    color: #FFFFFF;
 }
 
 /*TODO CARTE INFO */
@@ -88,7 +142,7 @@ header{
     margin-top: -15px;
 }
 
-.heureDebut, .salle, .TdTpCm{
+.heureDebut, .TdTpCm{
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.176);
     font-size: 13px;
@@ -97,6 +151,7 @@ header{
     border-radius: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
+    color: white;
 }
 
 .ImgSize{
@@ -107,7 +162,6 @@ header{
 .profnbTemps{
     margin-top: -15px;
     display: flex;
-    gap: 10px;
     color: rgba(255, 255, 255, 0.622);
 }
 
@@ -191,3 +245,7 @@ hr{
         margin: auto;
     }
 }
+
+
+
+
