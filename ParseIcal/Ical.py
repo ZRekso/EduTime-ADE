@@ -13,7 +13,7 @@ supabase = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SECRET
 fuseau_heure = ZoneInfo("Europe/Paris")
 
 ical_config = {
-    "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/KYNobQnv.shu"
+    "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/E3p1e5YA.shu"
 }
 
 reponse_ical = requests.get(ical_config["url"])
