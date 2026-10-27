@@ -39,6 +39,10 @@ let professeur = document.querySelector(".professeur");
 let nomCour = document.querySelector(".nomCour");
 let heureDebut = document.querySelector(".heureDebut");
 let heureFin = document.querySelector(".heureFin");
+let status = document.querySelector(".status")
+let barreFin = document.querySelector(".barreFin");
+let barreDebut = document.querySelector(".barreDebut");
+
 
 let salle = document.querySelector(".salle");
 let TdTpCm = document.querySelector(".TdTpCm");
@@ -78,18 +82,49 @@ async function afficherInterface() {
     const prochainCours = coursFutursEtActuels[0];
     if (prochainCours) {
         if (maintenant >= prochainCours.dateObjetDebut){
-            txtProchainCour.innerHTML = "<span id='cercleEtat'>○</span> PROCHAIN COURS";
+            txtProchainCour.innerHTML = "<span id='cercleEtatE'></span> EN COURS"; // revoir le cerlce plus tard TODO            document.getElementById("hrProchain").classList.remove("remove");
+            document.getElementById("hrProchain").classList.add("remove");
+            document.getElementById("removeHD").classList.add("remove");
+            document.getElementById("removeHF").classList.add("remove");
+            document.getElementById("removeT").classList.add("remove");
+            document.getElementById("removeS").classList.add("remove");
+            document.getElementById("containerStatusNbTemps").classList.remove("profnbTemps")
+
+            // Barre de durée du cour
+            const pourcentage = (maintenant - prochainCours.dateObjetDebut) / (prochainCours.dateObjetFin - prochainCours.dateObjetDebut) * 100;
+            document.querySelector(".barre-remplie").style.width = pourcentage + "%";
+
         }
         else{
             txtProchainCour.innerHTML = "<span id='cercleEtat'>○</span> PROCHAIN COURS";
-
+            document.getElementById("containerStatusNbTemps").classList.add("profnbTemps")
+            document.getElementById("containerStatusNbTemps").classList.remove("remove")
+            document.getElementById("hrProchain").classList.remove("remove");
+            document.getElementById("removeBarre").classList.add("remove");
+            document.getElementById("removeHBarre").classList.add("remove");
+            status.innerHTML = "Commence dans"
+            const diff = prochainCours.dateObjetDebut - maintenant;
+            const heures = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            if (heures > 0) {
+                tempsProchainCour.innerHTML = `${heures}h ${minutes} min`;
+            } else {
+                tempsProchainCour.innerHTML = `${minutes} min`;
+            }
         }
         nomCour.innerHTML = prochainCours.titre;
         professeur.innerHTML = prochainCours.professeur;
         heureDebut.innerHTML = prochainCours.heure;
         heureFin.innerHTML = prochainCours.heureFin;
+        barreDebut.innerHTML = prochainCours.heure;
+        barreFin.innerHTML = prochainCours.heureFin;
         salle.innerHTML = prochainCours.salle;
         // TdTpCm.innerHTML = prochainCours.TpTdCm;
+
+
+
+        heureDebut.innerHTML = prochainCours.heure;
+        heureFin.innerHTML = prochainCours.heureFin;
     } else {
         nomCour.innerHTML = "Aucun cours à venir !";
         professeur.innerHTML = "";
