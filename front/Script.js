@@ -197,23 +197,27 @@ async function afficherInterface() {
     }
 
 
-    let heureDebutJournee = document.querySelector(".heureDebutJournee");
-    let heureFinJournee = document.querySelector(".heureFinJournee");
-    const debut = courDuJour[0].dateObjetDebut;
-    const fin = courDuJour[courDuJour.length-1].dateObjetFin;
+    if (courDuJour.length > 0) {
+        let heureDebutJournee = document.querySelector(".heureDebutJournee");
+        let heureFinJournee = document.querySelector(".heureFinJournee");
+        const debut = courDuJour[0].dateObjetDebut;
+        const fin = courDuJour[courDuJour.length - 1].dateObjetFin;
 
-    // TODO Voir si ya pas un bug ou si le tableau est bien trié car pas les bonnes heures
-    const minutesDebut = String(debut.getMinutes()).padStart(2, '0');
-    const heureDebutFormattee = `${debut.getHours()}:${minutesDebut}`;
-    const minutesFin = String(fin.getMinutes()).padStart(2, '0');
-    const heureFinFormattee = `${debut.getHours()}:${minutesFin}`;
+        // TODO Voir si ya pas un bug ou si le tableau est bien trié car pas les bonnes heures
+        const minutesDebut = String(debut.getMinutes()).padStart(2, '0');
+        const heureDebutFormattee = `${debut.getHours()}:${minutesDebut}`;
+        const minutesFin = String(fin.getMinutes()).padStart(2, '0');
+        const heureFinFormattee = `${debut.getHours()}:${minutesFin}`;
 
 
-    heureDebutJournee.innerHTML = heureDebutFormattee;
-    heureFinJournee.innerHTML = heureFinFormattee;
-    const pourcentage = (maintenant - debut) / (fin - debut) * 100;
-    document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
-
+        heureDebutJournee.innerHTML = heureDebutFormattee;
+        heureFinJournee.innerHTML = heureFinFormattee;
+        const pourcentage = (maintenant - debut) / (fin - debut) * 100;
+        document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
+    }
+    else{
+        //TODO
+    }
 
 
 
