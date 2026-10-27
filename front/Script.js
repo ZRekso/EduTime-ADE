@@ -96,7 +96,7 @@ async function afficherInterface() {
 
         }
         else{
-            txtProchainCour.innerHTML = "<span id='cercleEtat'>○</span> PROCHAIN COURS";
+            txtProchainCour.innerHTML = "<span id='cercleEtatP'></span> PROCHAIN COURS";
             document.getElementById("containerStatusNbTemps").classList.add("profnbTemps")
             document.getElementById("containerStatusNbTemps").classList.remove("remove")
             document.getElementById("hrProchain").classList.remove("remove");
