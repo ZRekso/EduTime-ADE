@@ -38,6 +38,8 @@ let dateADJ = document.querySelector(".txt-dateADJ");
 let professeur = document.querySelector(".professeur");
 let nomCour = document.querySelector(".nomCour");
 let heureDebut = document.querySelector(".heureDebut");
+let heureFin = document.querySelector(".heureFin");
+
 let salle = document.querySelector(".salle");
 let TdTpCm = document.querySelector(".TdTpCm");
 let txtProchainCour = document.querySelector(".txtProchainCour");
@@ -75,15 +77,24 @@ async function afficherInterface() {
     coursFutursEtActuels.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut);
     const prochainCours = coursFutursEtActuels[0];
     if (prochainCours) {
+        if (maintenant >= prochainCours.dateObjetDebut){
+            txtProchainCour.innerHTML = "<span id='cercleEtat'>○</span> PROCHAIN COURS";
+        }
+        else{
+            txtProchainCour.innerHTML = "<span id='cercleEtat'>○</span> PROCHAIN COURS";
+
+        }
         nomCour.innerHTML = prochainCours.titre;
         professeur.innerHTML = prochainCours.professeur;
         heureDebut.innerHTML = prochainCours.heure;
+        heureFin.innerHTML = prochainCours.heureFin;
         salle.innerHTML = prochainCours.salle;
         // TdTpCm.innerHTML = prochainCours.TpTdCm;
     } else {
         nomCour.innerHTML = "Aucun cours à venir !";
         professeur.innerHTML = "";
         heureDebut.innerHTML = "";
+        heureFin.innerHTML = "";
         salle.innerHTML = "";
         TdTpCm.innerHTML = "";
     }
@@ -129,7 +140,6 @@ async function afficherInterface() {
         week.innerHTML = "Aucun cour aujourd'hui 🎉";
     }
     ADJSpan.innerHTML = "Aujourd'hui";
-    txtProchainCour.innerHTML = "<span id='cercleEtat'>○</span> PROCHAIN COURS";
 
 
 
@@ -208,10 +218,10 @@ async function afficherInterface() {
     NbHeureRestant.innerHTML = `${heuresRestantes}h${minutesReste}`;
     txtheureRestant.innerHTML = "Heure";
 
+    */
     document.getElementById("infoProchainCour").classList.remove("loading");
     document.getElementById("Stat").classList.remove("loading");
     document.getElementById("conteneurEmploi").classList.remove("loading");
-    */
 
 }
 
