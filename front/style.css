@@ -52,6 +52,73 @@
   color: #FFFFFF;
 }
 
+.profnbTemps{
+    margin-top: -4.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.622);
+}
+
+/* Barre progression */
+.barre {
+    margin-top: -4.5vh;
+    height: 4px; background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+}
+.barre-remplie {
+    height: 100%; background: white;
+    border-radius: 10px;
+}
+
+.containerHeureBarre{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -3.4vh;
+}
+
+.barreDebut, .barreFin{
+    margin: 0;
+}
+
+#cercleEtatE{
+    content: "";
+    height: 1vh;
+    width: 1vh;
+    border-radius: 50%;
+    border: none;
+    background-color: #FFD089;
+    font-size: 1.5em;
+}
+
+#cercleEtatE {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation{
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+    }
+    0% {
+        box-shadow: 0 0 0 0px #F9AF03;
+    }
+}
+
+
+
+
+
+.status {
+    font-family: var(--police-texte);
+    font-size: var(--texte-carte);
+    font-weight: var(--graisse-semi);
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
 [data-theme="sombre"] {
     /* TODO */
 }
@@ -84,7 +151,7 @@ header{
     overflow:  hidden; /* evite d'avoir des debordement chelou */
     background-color:  var(--courCarte);
     border-radius: 20px;
-    padding: 10px;
+    padding: 11px;
     margin-top: -5px;
 }
 
@@ -111,6 +178,9 @@ header{
 }*/
 
 .txtProchainCour{
+    display: flex;
+    align-items: center;
+    gap: 7px;
     letter-spacing: var(--espacement-majuscules)
 }
 
@@ -156,10 +226,13 @@ header{
     width: 30%;
 }
 
-.profnbTemps{
-    margin-top: -15px;
-    display: flex;
-    color: rgba(255, 255, 255, 0.622);
+.nbTemps {
+    font-family: var(--police-titre);
+    font-size: var(--titre-jour);
+    font-weight: var(--graisse-gras);
+    letter-spacing: var(--espacement-titre);
+    color: #FFFFFF;
+    margin: 2px;
 }
 
 body {
