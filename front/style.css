@@ -77,7 +77,6 @@
 .barreDebut, .barreFin{
     margin: 0;
 }
-
 #cercleEtatE, #cercleEtatP{
     content: "";
     height: 8px;
