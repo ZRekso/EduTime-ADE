@@ -134,24 +134,21 @@ header{
     transition: 0.3s ease;
     display: flex;
     gap: 30px;
+    flex-direction: column;
 }
 
 .StyleInfoProchainCour {
     display: flex;
+    margin-top: -4vh;
     align-items: center;
-    margin-top: -15px;
+    gap: 1vh;
 }
 
-.heureDebut, .TdTpCm{
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.176);
-    font-size: 13px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 20px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    color: white;
+.setting {
+    font-family: var(--police-texte);
+    font-size: var(--texte-carte);
+    font-weight: var(--graisse-normal);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .ImgSize{
@@ -227,7 +224,13 @@ body {
 }
 
 hr{
-    color: rgba(255, 255, 255, 0.087);
+    margin-top: -4vh;
+    color: rgba(255, 255, 255, 0.22);
+    width: 100%;
+}
+
+.remove{
+    display: none;
 }
 
 .week{
