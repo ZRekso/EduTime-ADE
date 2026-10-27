@@ -21,21 +21,21 @@ calendrier_ical = Calendar.from_ical(reponse_ical.text)
 
 def ligne_prof(ligne):
     texte = ligne.strip()
-    if (texte.startswith("Groupe") or texte.startswith("B1INFO") or texte.startswith("A Attester") or texte.startswith("(") or texte == ""):
+    if (texte.startswith("Groupe") or texte.startswith("B2INFO") or texte.startswith("A Attester") or texte.startswith("(") or texte == ""):
         return False
     return True
 
 def ligne_code(ligne):  # BUT 1 / 2 /3
     texte = ligne.strip()
-    if texte.startswith("B1INFO"):
+    if texte.startswith("B2INFO"):
         return True
     return False
 
 def type_but(code):
     if code is None:
         return None
-    if "B1INFO" in code:
-        return "BUT1"
+    if "B2INFO" in code:
+        return "BUT2"
 
 def ligne_groupe(ligne):
     texte = ligne.strip()
