@@ -27,15 +27,15 @@ def ligne_prof(ligne):
 
 def ligne_code(ligne):  # BUT 1 / 2 /3
     texte = ligne.strip()
-    if texte.startswith("B1INFO"):
+    if texte.startswith("B2INFO"):
         return True
     return False
 
 def type_but(code):
     if code is None:
         return None
-    if "B1INFO" in code:
-        return "BUT1"
+    if "B2INFO" in code:
+        return "BUT2"
 
 def ligne_groupe(ligne):
     texte = ligne.strip()
