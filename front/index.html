@@ -7,7 +7,6 @@
     <link rel="icon" type="image/svg+xml" href="IMG/favicon-edutime.svg">
     <link rel="apple-touch-icon" href="IMG/LOGO.png">   
     <title>EduTime</title>
-    <script defer src="Script.js"></script>
 </head>
 <body>
     <header>
@@ -17,19 +16,21 @@
 
     <!-- voir pour afficher le prochain cour -->
     <section id="NextCour">
-        <p class="txtProchainCour"></p>
+        <div class="container-etatCour">
+            <p class="txtProchainCour"></p>
+            <p class="salle"></p>
+        </div>
         <p class="nomCour">Chargement...</p>
         <div id="infoProchainCour" class="loading">
             <div class="StyleInfoProchainCour">
-                <!--<img class="ImgSize" src="IMG/Horloge.svg" alt="Image horloge">-->
                 <p class="heureDebut"></p>
             </div>
             <div class="StyleInfoProchainCour">
                 <!-- <img class="ImgSize" src="IMG/Localiser.svg" alt="Image Localiser"> -->
-                <p class="salle"></p>
+
             </div>
             <div class="StyleInfoProchainCour">
-                <p class="TdTpCm"></p>
+                <!-- <p class="TdTpCm"></p> -->
             </div>
         </div>
         <div class="profnbTemps">
@@ -60,6 +61,7 @@
         
     </nav>
 
+    <script defer src="Script.js"></script>
     <script src="parseADE.js" defer></script>
 </body>
 </body>
