@@ -197,23 +197,41 @@ async function afficherInterface() {
     }
 
 
-    let heureDebutJournee = document.querySelector(".heureDebutJournee");
-    let heureFinJournee = document.querySelector(".heureFinJournee");
-    const debut = courDuJour[0].dateObjetDebut;
-    const fin = courDuJour[courDuJour.length-1].dateObjetFin;
+    if (courDuJour.length > 0) {
+        let heureDebutJournee = document.querySelector(".heureDebutJournee");
+        let heureFinJournee = document.querySelector(".heureFinJournee");
+        const debut = courDuJour[0].dateObjetDebut;
+        const fin = courDuJour[courDuJour.length - 1].dateObjetFin;
 
-    // TODO Voir si ya pas un bug ou si le tableau est bien trié car pas les bonnes heures
-    const minutesDebut = String(debut.getMinutes()).padStart(2, '0');
-    const heureDebutFormattee = `${debut.getHours()}:${minutesDebut}`;
-    const minutesFin = String(fin.getMinutes()).padStart(2, '0');
-    const heureFinFormattee = `${debut.getHours()}:${minutesFin}`;
+        // TODO Voir si ya pas un bug ou si le tableau est bien trié car pas les bonnes heures
+        const minutesDebut = String(debut.getMinutes()).padStart(2, '0');
+        const heureDebutFormattee = `${debut.getHours()}:${minutesDebut}`;
+        const minutesFin = String(fin.getMinutes()).padStart(2, '0');
+        const heureFinFormattee = `${debut.getHours()}:${minutesFin}`;
 
+        heureDebutJournee.innerHTML = heureDebutFormattee;
+        heureFinJournee.innerHTML = heureFinFormattee;
+        const pourcentage = (maintenant - debut) / (fin - debut) * 100;
+        document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
 
-    heureDebutJournee.innerHTML = heureDebutFormattee;
-    heureFinJournee.innerHTML = heureFinFormattee;
-    const pourcentage = (maintenant - debut) / (fin - debut) * 100;
-    document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
-
+    }
+    else{
+        document.getElementById("removeBarreJournee").classList.add("remove");
+        document.getElementById("removeContainerHeure").classList.add("remove");
+        document.getElementById("removeContainerI").classList.add("remove");
+        document.getElementById("EDTJour").classList.add("remove");
+        const sectionJour = document.getElementById('jour');
+        document.getElementById("jour").classList.add("reprise");
+        sectionJour.innerHTML = `
+            <div class="containerSVG">
+                <svg xmlns="http://www.w3.org/2000/svg" color="#2848c8" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15.5 2 2 4-4"/></svg>
+            </div>
+            <div>
+                <p class="txt">Pas de cours aujourd'hui</p>
+                <p class="txt-gray">Reprise le ${prochainCours.date} à ${prochainCours.heure}</p>
+            </div>
+          `;
+    }
 
 
 
@@ -277,9 +295,10 @@ async function afficherInterface() {
 
     */
     document.getElementById("infoProchainCour").classList.remove("loading");
-    document.getElementById("Stat").classList.remove("loading");
-    document.getElementById("conteneurEmploi").classList.remove("loading");
-
+    // document.getElementById("Stat").classList.remove("loading");
+    // document.getElementById("conteneurEmploi").classList.remove("loading");
+    document.getElementById("jour").classList.remove("loading");
+    document.getElementById("EDTJour").classList.remove("loading");
 }
 
 afficherInterface();

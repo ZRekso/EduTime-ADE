@@ -4,6 +4,8 @@
     --btnActif: #2848C8;
     --courCarte: #2848C8;
     --texte: #000000;
+    --texte-secondaire: #5E667D;
+    --bg-svg: #E8ECFB;
 
      /* Polices */
     --police-titre: 'Bricolage Grotesque', sans-serif;
@@ -327,9 +329,6 @@ hr{
     width: 100%;
 }
 
-.remove{
-    display: none;
-}
 
 .week{
     color: white;
@@ -337,7 +336,7 @@ hr{
 }
 
 
-#journee{
+#jour{
     padding: 15px;
     border-radius: 15px;
     margin-top: 15px;
@@ -363,7 +362,6 @@ hr{
 .containerHeureJournee p {
   margin: 0;
 }
-
 
 .containerHeureJournee{
     display: flex;
@@ -402,6 +400,40 @@ hr{
     background-color: #2848C8;
     border-radius: 10px;
 
+}
+
+
+.remove{
+    display: none;
+}
+
+.txt{
+    font-family: var(--police-texte);
+    font-size: var(--texte-liste);
+    font-weight: var(--graisse-gras);
+    color: var(--texte);
+    margin: 0;
+}
+
+.txt-gray{
+    font-family: var(--police-texte);
+    font-size: var(--texte-petit);
+    font-weight: var(--graisse-normal);
+    color: #5E667D;
+    margin: 0;
+}
+
+#jour.reprise{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.containerSVG{
+    background-color: var(--bg-svg);
+    border-radius: 8px;
+    padding: 8px;
 }
 
 
