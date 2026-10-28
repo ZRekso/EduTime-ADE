@@ -227,6 +227,8 @@ async function afficherInterface() {
         document.getElementById("removeContainerHeure").classList.add("remove");
         document.getElementById("removeContainerI").classList.add("remove");
         document.getElementById("EDTJour").classList.add("remove");
+        console.log("test")
+        document.getElementById("txt-EDT").classList.add("remove");
         const sectionJour = document.getElementById('jour');
         document.getElementById("jour").classList.add("reprise");
         sectionJour.innerHTML = `
@@ -306,6 +308,7 @@ async function afficherInterface() {
     // document.getElementById("conteneurEmploi").classList.remove("loading");
     document.getElementById("jour").classList.remove("loading");
     document.getElementById("EDTJour").classList.remove("loading");
+    document.getElementById("txt-EDT").classList.remove("loading");
 }
 
 afficherInterface();

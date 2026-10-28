@@ -56,31 +56,30 @@
             <p class="heureFinJournee"></p>
         </div>
     </section>
-
+    <p id="txt-EDT" class="loading">Emploi du temps</p>
     <section id="EDTJour" class="loading">
 
     </section>
 
-
-    <!-- voir pour afficher les stast combie nde cour restant avant la fin de journee, combien de cour au total dans la journee, et un toisieme jsp encore-->
-    <!--
-    <section id="Stat" class="loading">
-    TODO
-    </section> -->
-
-    <!-- Voir pour afficher edt recup avec JS -->
-    <section id="conteneurEmploi" class="loading">
-        <div class="emploiDuJour">
-            <div class="emploiHeader">
-                <span class="ADJSpan">Aujourd'hui</span>
-                <p class="week"></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- btn acceuil, semaine, reglage, (option NOTIFICATION quand il y a un cour qui a etait annule ou modifier, ou les FUTUR DS )-->
     <nav>
-        
+        <div>
+            <a class="nav-lien actif" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+                <p>Aujourd'hui</p>
+            </a>
+        </div>
+        <div>
+            <a class="nav-lien" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                <p>Semaine</p>
+            </a>
+        </div>
+        <div>
+            <a class="nav-lien" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+                <p>Réglages</p>
+            </a>
+        </div>
     </nav>
 
     <script defer src="Script.js"></script>
