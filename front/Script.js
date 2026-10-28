@@ -1,5 +1,13 @@
 const API_URL = "https://apiedutime.vercel.app/";
 
+function texteEnCouleur(texte) {
+    let hash = 0;
+    for (let i = 0; i < texte.length; i++) {
+        hash = texte.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return `hsl(${Math.abs(hash) % 360}, 65%, 50%)`;
+}
+
 async function tableau() {
     const reponse = await fetch(API_URL);
     const donnees = await reponse.json();
@@ -147,37 +155,6 @@ async function afficherInterface() {
     courDuJour.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut);
     const CourDeLaJournee = courDuJour[0];
     const conteneur = document.querySelector(".emploiDuJour");
-    if (CourDeLaJournee) {
-        for (let i = 0; i < courDuJour.length; i++) {
-            const cours = courDuJour[i];
-
-            const carte = document.createElement("div");
-            carte.classList.add("carteCours");
-
-            carte.innerHTML = `
-                <div class="cartecontenu">
-                    <div class="carte-gauche">
-                        <p class="carte-titre">${cours.titre}</p>
-                        <p class="carte-heure">${cours.heure} - ${cours.heureFin}</p>
-                    </div>
-                    <div class="carte-droite">
-                        <span class="carte-badge">${cours.TpTdCm}</span>
-                        <p class="carte-salle">${cours.salle}</p>
-                    </div>
-                </div>
-                <hr>
-            `;
-
-            if (maintenant >= cours.dateObjetDebut && maintenant <= cours.dateObjetFin) {
-                carte.querySelector(".cartecontenu").style.backgroundColor = "rgba(148, 147, 147, 0.15)";
-            }
-
-            conteneur.appendChild(carte);
-        }
-    } else {
-        week.innerHTML = "Aucun cour aujourd'hui 🎉";
-    }
-    ADJSpan.innerHTML = "Aujourd'hui";
 
     // Stat NB cour journee
     const AujourdHui = new Date().toLocaleDateString("fr-FR");
@@ -213,7 +190,37 @@ async function afficherInterface() {
         heureFinJournee.innerHTML = heureFinFormattee;
         const pourcentage = (maintenant - debut) / (fin - debut) * 100;
         document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
+        const sectionEDT = document.getElementById("EDTJour");
+        if (CourDeLaJournee) {
+            for (let i = 0; i < courDuJour.length; i++) {
+                const cours = courDuJour[i];
+                const carte = document.createElement("div");
 
+                carte.innerHTML = `
+                    <div class="container-EDT">
+                        <div class="containerHeure">
+                            <p class="edt-debut">${cours.heure}</p>
+                            <p class="edt-fin">${cours.heureFin}</p>
+                        </div>
+                        <div class="barreM"></div>
+                        <div class="">
+                            <p class="edt-titre">${cours.titre}</p>
+                            <p class="edt-infos">${cours.TpTdCm} • ${cours.salle} • ${cours.professeur}</p>
+                        </div>
+                        <div></div> <!-- TODO VOIR PAS SUR POUR LE TXT EN COURS-->
+                    </div>
+                `;
+                carte.querySelector(".barreM").style.backgroundColor = texteEnCouleur(cours.titre);
+
+                if (maintenant >= cours.dateObjetDebut && maintenant <= cours.dateObjetFin) {
+                    carte.classList.add("actuel");
+                }
+                if(maintenant > cours.dateObjetFin){
+                    carte.querySelector(".container-EDT").style.opacity =  0.33;
+                }
+                sectionEDT.appendChild(carte);
+            }
+        }
     }
     else{
         document.getElementById("removeBarreJournee").classList.add("remove");
