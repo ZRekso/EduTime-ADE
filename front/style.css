@@ -436,6 +436,73 @@ hr{
     padding: 8px;
 }
 
+#EDTJour{
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-variant-numeric: tabular-nums; /* Chiffre de meme largeur */
+}
+
+#EDTJour .container-EDT{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#EDTJour .containerHeure{
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    flex-shrink: 0;
+}
+
+#EDTJour .edt-debut {
+  font-family: var(--police-texte);
+  font-size: var(--texte-info);
+  font-weight: var(--graisse-gras);
+  color: var(--texte);
+  margin: 0;
+}
+
+#EDTJour .edt-fin {
+  font-family: var(--police-texte);
+  font-size: var(--texte-mini);
+  font-weight: var(--graisse-moyen);
+  color: var(--texte-secondaire);
+  margin: 0;
+}
+
+#EDTJour .edt-titre {
+  font-family: var(--police-texte);
+  font-size: var(--texte-liste);
+  font-weight: var(--graisse-gras);
+  color: var(--texte);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+#EDTJour .edt-infos {
+  font-family: var(--police-texte);
+  font-size: var(--texte-petit);
+  font-weight: var(--graisse-normal);
+  color: var(--texte-secondaire);
+  margin: 0;
+}
+
+#EDTJour .barreM{
+    width: 3px;
+    border-radius: 5px;
+    align-self: stretch;
+    flex-shrink: 0;
+}
 
 /* PC ensuite */
 @media (min-width: 768px) {
