@@ -1,45 +1,8 @@
-const API_URL = "https://apiedutime.vercel.app/";
-
-function texteEnCouleur(texte) {
-    let hash = 0;
-    for (let i = 0; i < texte.length; i++) {
-        hash = texte.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return `hsl(${Math.abs(hash) % 360}, 65%, 50%)`;
-}
-
-async function tableau() {
-    const reponse = await fetch(API_URL);
-    const donnees = await reponse.json();
-
-    const cours = [];
-    for (let i = 0; i < donnees.length; i++) {
-        const c = donnees[i];
-        const debut = new Date(`${c.date}T${c.heure_debut}`);
-        const fin = new Date(`${c.date}T${c.heure_fin}`);
-
-        cours.push({
-            titre: c.matiere,
-            professeur: c.prof || "",
-            salle: c.salle || "",
-            TpTdCm: c.type_cours || "",
-            heure: c.heure_debut.slice(0, 5),      // "08:30:00" -> "08:30"
-            heureFin: c.heure_fin.slice(0, 5),
-            date: debut.toLocaleDateString("fr-FR"), // "17/10/2026", comme avant
-            dateObjetDebut: debut,
-            dateObjetFin: fin
-        });
-    }
-    return cours;
-}
-
 // Affichage DATE
 const aujourdHui = new Date();
 const options = { weekday: 'long', day: 'numeric', month: 'long'};
 let dateFront = new Intl.DateTimeFormat('fr-FR', options).format(aujourdHui);
 dateFront = dateFront.charAt(0).toUpperCase() + dateFront.slice(1);
-
-
 
 // Prochain cour
 let dateADJ = document.querySelector(".txt-dateADJ");
@@ -57,22 +20,6 @@ let salle = document.querySelector(".salle");
 let TdTpCm = document.querySelector(".TdTpCm");
 let txtProchainCour = document.querySelector(".txtProchainCour");
 let tempsProchainCour = document.querySelector(".nbTemps");
-let tiret = document.querySelector(".tiret");
-
-//stat
-let NbCourADJ = document.querySelector(".NbCourADJ");
-let CoursAujourdhui = document.querySelector(".txt-CoursAujourdhui");
-
-let NbCourRestant = document.querySelector(".NbCourRestant");
-let txtcourRestant = document.querySelector(".txt-courRestant");
-
-let NbHeureRestant = document.querySelector(".NbHeureRestant");
-let txtheureRestant = document.querySelector(".txt-heureRestant");
-
-// cour adj
-let ADJSpan = document.querySelector(".ADJSpan");
-let week = document.querySelector(".week");
-
 
 dateADJ.innerHTML = dateFront;
 
@@ -130,10 +77,6 @@ async function afficherInterface() {
         barreDebut.innerHTML = prochainCours.heure;
         barreFin.innerHTML = prochainCours.heureFin;
         salle.innerHTML = prochainCours.salle;
-        // TdTpCm.innerHTML = prochainCours.TpTdCm;
-
-
-
         heureDebut.innerHTML = prochainCours.heure;
         heureFin.innerHTML = prochainCours.heureFin;
     } else {
@@ -154,9 +97,7 @@ async function afficherInterface() {
     }
     courDuJour.sort((a, b) => a.dateObjetDebut - b.dateObjetDebut);
     const CourDeLaJournee = courDuJour[0];
-    const conteneur = document.querySelector(".emploiDuJour");
 
-    // Stat NB cour journee
     const AujourdHui = new Date().toLocaleDateString("fr-FR");
     let nbCoursJournee = 0;
     for (let i = 0; i < tousLesCours.length; i++) {
@@ -242,70 +183,7 @@ async function afficherInterface() {
           `;
     }
 
-
-
-
-    /*
-    //stat NB cour restant
-    const HeureADJs = new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
-    let nbCoursRestant = 0;
-    for (let i = 0; i < tousLesCours.length; i++) {
-        const cours = tousLesCours[i];
-        if (cours.date === AujourdHui && cours.heure > HeureADJs) {
-            nbCoursRestant++;
-        }
-    }
-    if(nbCoursRestant > 0 ){
-        NbCourRestant.innerHTML = nbCoursRestant;
-    }
-    else{
-        nbCoursRestant = 0;
-        NbCourRestant.innerHTML = nbCoursRestant;
-    }
-    txtcourRestant.innerHTML = "Cours / RST";
-
-    // Temps restant avant le prochain cours
-    if (!prochainCours) {
-        tempsProchainCour.innerHTML = "--";
-    } else {
-        const diff = prochainCours.dateObjetDebut - maintenant;
-
-        if (diff <= 0) {
-            tempsProchainCour.innerHTML = "En cours";
-            tiret.innerHTML = " - ";
-        } else {
-            const heures = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-            if (heures > 0) {
-                tempsProchainCour.innerHTML = `${heures}h ${minutes}min`;
-                tiret.innerHTML = " - ";
-            } else {
-                tempsProchainCour.innerHTML = `${minutes} min`;
-                tiret.innerHTML = " - ";
-            }
-        }
-    }
-
-    //stat NB Heure restant
-    let msRestantes = 0;
-    for (let i = 0; i < tousLesCours.length; i++) {
-        const cours = tousLesCours[i];
-        if (cours.date === AujourdHui && cours.dateObjetFin > maintenant) {
-            // Si le cours a déjà commencé, on ne compte que le temps restant
-            msRestantes += cours.dateObjetFin - Math.max(cours.dateObjetDebut, maintenant);
-        }
-    }
-    const minutesRestantes = Math.round(msRestantes / (1000 * 60));
-    const heuresRestantes = Math.floor(minutesRestantes / 60);
-    const minutesReste = String(minutesRestantes % 60).padStart(2, "0");
-    NbHeureRestant.innerHTML = `${heuresRestantes}h${minutesReste}`;
-    txtheureRestant.innerHTML = "Heure";
-
-    */
     document.getElementById("infoProchainCour").classList.remove("loading");
-    // document.getElementById("Stat").classList.remove("loading");
-    // document.getElementById("conteneurEmploi").classList.remove("loading");
     document.getElementById("jour").classList.remove("loading");
     document.getElementById("EDTJour").classList.remove("loading");
     document.getElementById("txt-EDT").classList.remove("loading");
