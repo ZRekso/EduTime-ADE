@@ -213,9 +213,24 @@ async function afficherInterface() {
         heureFinJournee.innerHTML = heureFinFormattee;
         const pourcentage = (maintenant - debut) / (fin - debut) * 100;
         document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
+
     }
     else{
-        //TODO
+        document.getElementById("removeBarreJournee").classList.add("remove");
+        document.getElementById("removeContainerHeure").classList.add("remove");
+        document.getElementById("removeContainerI").classList.add("remove");
+        document.getElementById("EDTJour").classList.add("remove");
+        const sectionJour = document.getElementById('jour');
+        document.getElementById("jour").classList.add("reprise");
+        sectionJour.innerHTML = `
+            <div class="containerSVG">
+                <svg xmlns="http://www.w3.org/2000/svg" color="#2848c8" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15.5 2 2 4-4"/></svg>
+            </div>
+            <div>
+                <p class="txt">Pas de cours aujourd'hui</p>
+                <p class="txt-gray">Reprise le ${prochainCours.date} à ${prochainCours.heure}</p>
+            </div>
+          `;
     }
 
 
@@ -280,9 +295,10 @@ async function afficherInterface() {
 
     */
     document.getElementById("infoProchainCour").classList.remove("loading");
-    document.getElementById("Stat").classList.remove("loading");
-    document.getElementById("conteneurEmploi").classList.remove("loading");
-
+    // document.getElementById("Stat").classList.remove("loading");
+    // document.getElementById("conteneurEmploi").classList.remove("loading");
+    document.getElementById("jour").classList.remove("loading");
+    document.getElementById("EDTJour").classList.remove("loading");
 }
 
 afficherInterface();
