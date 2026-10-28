@@ -267,6 +267,7 @@ body {
     font-family: sans-serif; /*voir police par la suite */
     margin: 0;
     padding: 16px;
+    padding-bottom: 90px;
 }
 
 /* Stats */
@@ -402,11 +403,6 @@ hr{
 
 }
 
-
-.remove{
-    display: none;
-}
-
 .txt{
     font-family: var(--police-texte);
     font-size: var(--texte-liste);
@@ -439,7 +435,7 @@ hr{
 #EDTJour{
     padding: 15px;
     border-radius: 15px;
-    margin-top: 15px;
+    margin-top: 7px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -504,6 +500,16 @@ hr{
     flex-shrink: 0;
 }
 
+#txt-EDT{
+    padding-top: 14px;
+    padding-left: 3px;
+    font-family: var(--police-titre);
+    font-size: var(--titre-section);
+    font-weight: var(--graisse-gras);
+    color: var(--texte);
+    margin: 0;
+}
+
 /* PC ensuite */
 @media (min-width: 768px) {
     .container {
@@ -511,4 +517,43 @@ hr{
         max-width: 1200px;
         margin: auto;
     }
+}
+
+
+.remove{
+    display: none;
+}
+
+#EDTJour.remove {
+    display: none;
+}
+
+nav{
+    background-color: var(--bgNavBar);
+    color: var(--texte);
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 5px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav .nav-lien {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--police-texte);
+  font-size: var(--texte-petit);
+  font-weight: var(--graisse-moyen);
+  color: #5E667D;
+  text-decoration: none;
+}
+
+nav .nav-lien.actif {
+  font-weight: var(--graisse-gras);
+  color: #2848C8;
 }
