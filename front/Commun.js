@@ -17,17 +17,8 @@ function numeroSemaine(date) {
 }
 
 async function tableau() {
-    // évite de recharger les données
-    let donnees;
-    const enCache = sessionStorage.getItem("cours");
-
-    if (enCache) {
-        donnees = JSON.parse(enCache);
-    } else {
-        const reponse = await fetch(API_URL);
-        donnees = await reponse.json();
-        sessionStorage.setItem("cours", JSON.stringify(donnees));
-    }
+    const reponse = await fetch(API_URL);
+    const donnees = await reponse.json();
     const cours = [];
     for (let i = 0; i < donnees.length; i++) {
         const c = donnees[i];

@@ -10,7 +10,7 @@ async function afficherSemaine() {
         const jour = new Date(lundi);
         jour.setDate(lundi.getDate() + i);
     }
-
+    // TODO
 }
 
 afficherSemaine();
