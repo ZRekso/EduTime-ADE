@@ -6,26 +6,33 @@
     --texte: #000000;
     --texte-secondaire: #5E667D;
     --bg-svg: #E8ECFB;
+    --surface: #FFFFFF;
+    --rail: #EEF0F6;
+    --bordure: #DFE2EB;
+    --ligne: #E6E8F0;
+    --ombre: 0 1px 2px rgba(18, 26, 51, 0.06);
+    --icone-svg: #2848C8;
+    --nav-actif: #2848C8;
 
      /* Polices */
     --police-titre: 'Bricolage Grotesque', sans-serif;
     --police-texte: 'DM Sans', system-ui, sans-serif;
 
     /* Tailles des titres (Bricolage) */
-    --titre-page: 30px;      /* Date, « Semaine 44 », « Réglages » */
-    --titre-cours: 24px;     /* Nom du cours en cours */
-    --titre-jour: 20px;      /* « Lundi 26 octobre » (Semaine) */
-    --numero-jour: 19px;     /* 26, 27… (Semaine) */
-    --titre-section: 18px;   /* « À suivre » */
+    --titre-page: 30px;      
+    --titre-cours: 24px;     
+    --titre-jour: 20px;      
+    --numero-jour: 19px;    
+    --titre-section: 18px; 
 
     /* Tailles du texte (DM Sans) */
-    --texte-groupe: 16px;    /* « Mon groupe » */
-    --texte-liste: 15px;     /* Nom des cours, « Lien iCal ADE » */
-    --texte-carte: 14px;     /* Infos carte bleue, « Ta journée », Sombre/Clair */
-    --texte-info: 13px;      /* « Semaine 44 », résumés, pastille heure, « Modifier » */
-    --texte-petit: 12px;     /* Horaires, pause, intertitres, onglets */
-    --texte-mini: 11px;      /* Graduation frise, LUN/MAR */
-    --texte-micro: 10px;     /* Type dans la pastille, « 4 cours » sous le jour */
+    --texte-groupe: 16px;  
+    --texte-liste: 15px;    
+    --texte-carte: 14px;    
+    --texte-info: 13px;      
+    --texte-petit: 12px;     
+    --texte-mini: 11px;      
+    --texte-micro: 10px;     
 
     /* Graisses */
     --graisse-normal: 400;
@@ -36,7 +43,22 @@
     /* Réglages des titres */
     --interligne-titre: 1.05;
     --espacement-titre: -0.02em;
-    --espacement-majuscules: 0.08em; /* « EN COURS », intertitres */
+    --espacement-majuscules: 0.08em;
+}
+
+html[data-theme="sombre"] {
+    --bg: #0E1222;
+    --bgNavBar: #0E1222;
+    --texte: #F3F4F8;
+    --texte-secondaire: #9AA3BA;
+    --bg-svg: #232B4A;
+    --surface: #1A2036;
+    --rail: #262D47;
+    --bordure: #2C3452;
+    --ligne: #222944;
+    --ombre: none;
+    --icone-svg: #9DB0FF;
+    --nav-actif: #FFFFFF;
 }
 
 .container-etatCour{
@@ -46,12 +68,12 @@
 
 
 .txtProchainCour, .salle {
-  font-family: var(--police-texte);
-  font-size: var(--texte-petit);
-  font-weight: var(--graisse-gras);
-  text-transform: uppercase;
-  letter-spacing: var(--espacement-majuscules);
-  color: #FFFFFF;
+    font-family: var(--police-texte);
+    font-size: var(--texte-petit);
+    font-weight: var(--graisse-gras);
+    text-transform: uppercase;
+    letter-spacing: var(--espacement-majuscules);
+    color: #FFFFFF;
 }
 
 .profnbTemps{
@@ -96,7 +118,7 @@
 }
 
 #cercleEtatE {
-  animation: pulse-animationEnCour 1s infinite;
+    animation: pulse-animationEnCour 1s infinite;
 }
 
 #cercleEtatP{
@@ -139,12 +161,6 @@
     color: rgba(255, 255, 255, 0.85);
     margin: 0;
 }
-
-[data-theme="sombre"] {
-    /* TODO */
-}
-
-
 
 /* Mobile */
 .container {
@@ -263,7 +279,7 @@ header{
 
 body {
     background-color: var(--bg);
-    color: #ffffff;
+    color: var(--texte);
     font-family: sans-serif; /*voir police par la suite */
     margin: 0;
     padding: 16px;
@@ -341,7 +357,7 @@ hr{
     padding: 15px;
     border-radius: 15px;
     margin-top: 15px;
-    background-color: white;
+    background-color: var(--surface);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -352,16 +368,16 @@ hr{
 }
 
 .heureDebutJournee, .heureFinJournee{
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--police-texte);
-  font-size: var(--texte-mini);
-  font-weight: var(--graisse-semi);
-  color: #5E667D;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--police-texte);
+    font-size: var(--texte-mini);
+    font-weight: var(--graisse-semi);
+    color: var(--texte-secondaire);
 }
 
 .containerHeureJournee p {
-  margin: 0;
+    margin: 0;
 }
 
 .containerHeureJournee{
@@ -386,13 +402,13 @@ hr{
     font-family: var(--police-texte);
     font-size: var(--texte-petit);
     font-weight: var(--graisse-normal);
-    color: #5E667D;
+    color: var(--texte-secondaire);
     margin: 0;
 }
 
 .barreJournee{
     height: 10px;
-    background: #EEF0F6;
+    background: var(--rail);
     border-radius: 10px;
 }
 
@@ -415,7 +431,7 @@ hr{
     font-family: var(--police-texte);
     font-size: var(--texte-petit);
     font-weight: var(--graisse-normal);
-    color: #5E667D;
+    color: var(--texte-secondaire);
     margin: 0;
 }
 
@@ -428,6 +444,7 @@ hr{
 
 .containerSVG{
     background-color: var(--bg-svg);
+    color: var(--icone-svg);
     border-radius: 8px;
     padding: 8px;
 }
@@ -436,7 +453,7 @@ hr{
     padding: 15px;
     border-radius: 15px;
     margin-top: 7px;
-    background-color: white;
+    background-color: var(--surface);
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -457,40 +474,40 @@ hr{
 }
 
 #EDTJour .edt-debut {
-  font-family: var(--police-texte);
-  font-size: var(--texte-info);
-  font-weight: var(--graisse-gras);
-  color: var(--texte);
-  margin: 0;
+    font-family: var(--police-texte);
+    font-size: var(--texte-info);
+    font-weight: var(--graisse-gras);
+    color: var(--texte);
+    margin: 0;
 }
 
 #EDTJour .edt-fin {
-  font-family: var(--police-texte);
-  font-size: var(--texte-mini);
-  font-weight: var(--graisse-moyen);
-  color: var(--texte-secondaire);
-  margin: 0;
+    font-family: var(--police-texte);
+    font-size: var(--texte-mini);
+    font-weight: var(--graisse-moyen);
+    color: var(--texte-secondaire);
+    margin: 0;
 }
 
 #EDTJour .edt-titre {
-  font-family: var(--police-texte);
-  font-size: var(--texte-liste);
-  font-weight: var(--graisse-gras);
-  color: var(--texte);
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    font-family: var(--police-texte);
+    font-size: var(--texte-liste);
+    font-weight: var(--graisse-gras);
+    color: var(--texte);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
 
 #EDTJour .edt-infos {
-  font-family: var(--police-texte);
-  font-size: var(--texte-petit);
-  font-weight: var(--graisse-normal);
-  color: var(--texte-secondaire);
-  margin: 0;
+    font-family: var(--police-texte);
+    font-size: var(--texte-petit);
+    font-weight: var(--graisse-normal);
+    color: var(--texte-secondaire);
+    margin: 0;
 }
 
 #EDTJour .barreM{
@@ -537,32 +554,33 @@ nav{
     left: 0;
     right: 0;
     padding-top: 10px;
+    border-top: 1px solid var(--ligne);
     justify-content: space-around;
     align-items: center;
 }
 
 nav .nav-lien {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--police-texte);
-  font-size: var(--texte-petit);
-  font-weight: var(--graisse-moyen);
-  color: #5E667D;
-  text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--police-texte);
+    font-size: var(--texte-petit);
+    font-weight: var(--graisse-moyen);
+    color: var(--texte-secondaire);
+    text-decoration: none;
 }
 
 nav .nav-lien.actif {
-  font-weight: var(--graisse-gras);
-  color: #2848C8;
+    font-weight: var(--graisse-gras);
+    color: var(--nav-actif);
 }
 
 .containerLienIcal{
     display: flex;
-    background-color: white;
+    background-color: var(--surface);
     border-radius: 13px;
-    box-shadow: 0 1px 2px rgba(18, 26, 51, 0.06);
+    box-shadow: var(--ombre);
     border: none;
     align-items: center;
     padding: 14px;
@@ -602,46 +620,145 @@ nav .nav-lien.actif {
     margin-bottom: 10px;
 }
 
-
-
-
-
-
-
-
-
 .apparence{
     margin-top: 20px;
 }
 
-.containerApp div:nth-child(1){
+.containerAppS div:nth-child(1){
+    padding: 8px;
     border: 2px #e0e3ec;
+    background-color: #0e1222;
+    border-radius: 8px;
     overflow: hidden;
 }
 
-.containerApp div:nth-child(1) span:nth-child(1){
+.containerAppS div:nth-child(1) span:nth-child(1){
     display: block;
-    content: "";
     background-color: #2848C8;
-    height: 5px;
+    height: 30px;
+    border-radius: 8px;
     width: 100%;
 }
 
-.containerApparence{
-    display: flex;
-    background-color: white;
-    border-radius: 13px;
-    box-shadow: 0 1px 2px rgba(18, 26, 51, 0.06);
-    border: none;
-    align-items: center;
-    padding: 14px;
-    gap: 8px;
+.containerAppS div:nth-child(1) span:nth-child(2), .containerAppS div:nth-child(1) span:nth-child(3){
+    display: block;
+    background-color: #1a2036;
+    height: 18px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 5px;
 }
 
-.containerApp{
+.containerApparence{
+    background-color: var(--surface);
+    border-radius: 13px;
+    box-shadow: var(--ombre);
+    border: none;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.containerAppS{
     display: flex;
     flex-direction: column;
-    border: #dfe2eb 2px solid;
+    border: var(--bordure) 2px solid;
     border-radius: 10px;
     padding: 8px;
+}
+
+.containerAppS div:nth-child(2){
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    justify-content: space-between;
+}
+
+.containerAppS div:nth-child(2) p{
+    font-family: var(--police-texte);
+    font-size: var(--texte-carte);
+    font-weight: var(--graisse-gras);
+    color: var(--texte);
+    margin: 0;
+
+}
+
+.containerAppS div:nth-child(2) span{
+    display: block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: solid 2px var(--bordure);
+}
+
+.containerAppC div:nth-child(1){
+    padding: 8px;
+    border: 2px #e0e3ec;
+    background-color: #F4F5F9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.containerAppC div:nth-child(1) span:nth-child(1){
+    display: block;
+    background-color: #2848C8;
+    height: 30px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.containerAppC div:nth-child(1) span:nth-child(2), .containerAppC div:nth-child(1) span:nth-child(3){
+    display: block;
+    background-color: #FFFFFF;
+    height: 18px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.containerAppC{
+    display: flex;
+    flex-direction: column;
+    border: var(--bordure) 2px solid;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.containerAppC div:nth-child(2){
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    justify-content: space-between;
+}
+
+.containerAppC div:nth-child(2) p{
+    font-family: var(--police-texte);
+    font-size: var(--texte-carte);
+    font-weight: var(--graisse-gras);
+    color: var(--texte);
+    margin: 0;
+
+}
+
+.containerAppC div:nth-child(2) span{
+    display: block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: solid 2px var(--bordure);
+}
+
+button{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+.modeChoisi{
+    border: #2848c8 2px solid;
+}
+
+.modeChosiCercle{
+    border: #2848c8 2px solid;
+    background-color: #2848C8;
 }

@@ -6,10 +6,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="IMG/favicon-edutime.svg">
     <link rel="apple-touch-icon" href="IMG/LOGO.png">
     <title>EduTime</title>
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'clair';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -20,7 +24,7 @@
         <p class="txtType">EMPLOI DU TEMPS</p>
         <div class="containerLienIcal">
             <div>
-                <svg color="black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                <svg color="#062E27" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
             </div>
             <div>
                 <p class="txtLien">Lien iCal ADE</p>
@@ -32,22 +36,32 @@
     <section>
         <p class="txtType apparence">APPARENCE</p>
         <div class="containerApparence">
-            <div class="containerApp">
-                <div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            <button id="btn-sombre">
+                <div id="sombre" class="containerAppS">
+                    <div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div>
+                        <p>Sombre</p>
+                        <span id="cercleSombre"></span>
+                    </div>
                 </div>
-                <div>
-                    <p>Sombre</p>
+            </button>
+            <button id="btn-clair">
+                <div id="clair" class="containerAppC">
+                    <div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div>
+                        <p>Clair</p>
+                        <span id="cercleClair"></span>
+                    </div>
                 </div>
-            </div>
-
-
-            
-            <div>
-
-            </div>
+            </button>
         </div>
     </section>
 
@@ -73,7 +87,6 @@
     </nav>
 
     <script src="Commun.js" defer></script>
-    <script src="parseADE.js" defer></script>
-</body>
+    <script src="reglages.js" defer></script>
 </body>
 </html>
