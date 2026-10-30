@@ -130,7 +130,15 @@ async function afficherInterface() {
         heureDebutJournee.innerHTML = heureDebutFormattee;
         heureFinJournee.innerHTML = heureFinFormattee;
         const pourcentage = (maintenant - debut) / (fin - debut) * 100;
-        document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
+        if(pourcentage > 100){
+            document.querySelector(".barreJournee-remplie").style.width = 100 + "%";
+        }
+        else if(pourcentage < 0){
+            document.querySelector(".barreJournee-remplie").style.width = 0 + "%";
+        }
+        else{
+            document.querySelector(".barreJournee-remplie").style.width = pourcentage + "%";
+        }
         const sectionEDT = document.getElementById("EDTJour");
         if (CourDeLaJournee) {
             for (let i = 0; i < courDuJour.length; i++) {
