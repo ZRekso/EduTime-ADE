@@ -764,7 +764,8 @@ button{
 }
 
 #duree{
-    padding-top: 25px;
+    padding-top: 8px;
+    padding-bottom: 15px;
     font-family: var(--police-texte);
     font-size: var(--texte-info);
     font-weight: var(--graisse-semi);
@@ -780,4 +781,54 @@ button{
     letter-spacing: var(--espacement-titre);
     color: var(--texte);
     margin: 0;
+}
+
+#barreJours {
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    margin-top: 14px;
+    background-color: var(--surface);
+    border-radius: 14px;
+    box-shadow: var(--ombre);
+}
+
+#barreJours button {
+    flex: 1;
+    height: 58px;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--texte);
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#barreJours .jourCourt {
+    font-family: var(--police-texte);
+    font-size: var(--texte-mini);
+    font-weight: var(--graisse-gras);
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+#barreJours .jourNumero {
+    font-family: var(--police-titre);
+    font-size: var(--numero-jour);
+    font-weight: var(--graisse-gras);
+}
+
+#barreJours button.jourActif {
+    background-color: #2848C8;
+    color: #FFFFFF;
+    border-radius: 15px;
+}
+
+.headSemaine{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
