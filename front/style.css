@@ -762,3 +762,22 @@ button{
     border: #2848c8 2px solid;
     background-color: #2848C8;
 }
+
+#duree{
+    padding-top: 25px;
+    font-family: var(--police-texte);
+    font-size: var(--texte-info);
+    font-weight: var(--graisse-semi);
+    color: var(--texte-secondaire);
+    margin: 0;
+}
+
+#titreSemaine{
+    font-family: var(--police-titre);
+    font-size: var(--titre-page);
+    font-weight: var(--graisse-gras);
+    line-height: var(--interligne-titre);
+    letter-spacing: var(--espacement-titre);
+    color: var(--texte);
+    margin: 0;
+}
