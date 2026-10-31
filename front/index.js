@@ -122,8 +122,10 @@ async function afficherInterface() {
         const fin = courDuJour[courDuJour.length - 1].dateObjetFin;
 
         // TODO Voir si ya pas un bug ou si le tableau est bien trié car pas les bonnes heures
-        const heureDebutFormattee = courDuJour[0].heure;
-        const heureFinFormattee = courDuJour[courDuJour.length - 1].heureFin;
+        const minutesDebut = String(debut.getMinutes()).padStart(2, '0');
+        const heureDebutFormattee = `${debut.getHours()}:${minutesDebut}`;
+        const minutesFin = String(fin.getMinutes()).padStart(2, '0');
+        const heureFinFormattee = `${debut.getHours()}:${minutesFin}`;
 
         heureDebutJournee.innerHTML = heureDebutFormattee;
         heureFinJournee.innerHTML = heureFinFormattee;
